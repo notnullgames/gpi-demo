@@ -2,8 +2,7 @@
 
 I wanted to make love2d games with a pi-zero inisde a [gameboy case](http://retroflag.com/GPi-CASE.html).
 
-I still need to update the code to properly use joystick. I enabled keys for testing.
-
+[![](http://img.youtube.com/vi/j5GTlKHo6zQ/0.jpg)](http://www.youtube.com/watch?v=j5GTlKHo6zQ "Lua on Pi Gameboy")
 
 ## setup
 
