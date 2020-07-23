@@ -12,7 +12,7 @@ run: ## run the current project
 clean: ## delete all output files
 	rm -rf runtime dist
 
-build: dist/$(NAME).love dist/windows/$(NAME).exe dist/macos/$(NAME) ## build ready-made distributables for .love, windows, and OSX
+build: dist/$(NAME).love dist/windows/$(NAME).exe dist/macos/$(NAME) ## build distributables for everyone in dist/
 
 runtime/windows:
 	rm -f /tmp/love-windows.zip

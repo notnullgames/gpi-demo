@@ -5,10 +5,16 @@ function options:draw()
   love.graphics.print("OPTIONS", 10, 10)
 end
 
+-- handle keyboard for dev
 function options:keyreleased(key, code)
   if key == 'escape' then
     Gamestate.switch(StateMenu)
   end
+end
+
+-- handle joystick
+function options:gamepadpressed(joystick, button)
+  
 end
 
 return options
