@@ -1,15 +1,18 @@
 NAME=love-game
 VERSION=11.3
 
-.PHONY: run clean
+.PHONY: help run clean
 
-run:
+help: ## show this help
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+run: ## run the current project
 	cd $(PWD)/src && love .
 
-clean:
+clean: ## delete all output files
 	rm -rf runtime dist
 
-build: dist/$(NAME).love dist/windows/$(NAME).exe dist/macos/$(NAME)
+build: dist/$(NAME).love dist/windows/$(NAME).exe dist/macos/$(NAME) ## build ready-made distributables for .love, windows, and OSX
 
 runtime/windows:
 	rm -f /tmp/love-windows.zip
