@@ -14,7 +14,7 @@ function game:draw()
 end
 
 -- handle input
-function game:pressed(button, other1, other2)
+function game:pressed(button)
   -- for display
   if button then
   	lastbutton = button
@@ -23,6 +23,5 @@ function game:pressed(button, other1, other2)
   	Gamestate.switch(StateMenu)
   end
 end
-
 
 return game
