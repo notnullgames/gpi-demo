@@ -24,10 +24,88 @@ function love.load()
     music:setLooping(true)
 end
 
--- gamestate only uses joystickpressed, so I am triggering gamepadpressed which is easier to work with
+-- this simplifies input into a single callback for keys & gamepad
 function love.gamepadpressed(joystick, button)
-  if Gamestate.current().gamepadpressed then
-    Gamestate.current().gamepadpressed(joystick, button)
+  local gs = Gamestate.current()
+  if gs.pressed then
+    if button == 'dpup' then
+      gs:pressed('up')
+    end
+    if button == 'dpdown' then
+      gs:pressed('down')
+    end
+    if button == 'dpleft' then
+      gs:pressed('left')
+    end
+    if button == 'dpright' then
+      gs:pressed('right')
+    end
+    if button == 'a' then
+      gs:pressed('a')
+    end
+    if button == 'b' then
+      gs:pressed('b')
+    end
+    if button == 'x' then
+      gs:pressed('x')
+    end
+    if button == 'y' then
+      gs:pressed('y')
+    end
+    if button == 'start' then
+      gs:pressed('start')
+    end
+    if button == 'back' then
+      gs:pressed('back')
+    end
+    if button == 'leftshoulder' then
+      gs:pressed('l')
+    end
+    if button == 'rightshoulder' then
+      gs:pressed('r')
+    end
+  end
+end
+
+function love.keypressed(key, code)
+  local gs = Gamestate.current()
+  if gs.pressed then
+    if key == 'up' then
+      gs:pressed('up')
+    end
+    if key == 'down' then
+      gs:pressed('down')
+    end
+    if key == 'left' then
+      gs:pressed('left')
+    end
+    if key == 'right' then
+      gs:pressed('right')
+    end
+    if key == 'z' then
+      gs:pressed('a')
+    end
+    if key == 'x' then
+      gs:pressed('b')
+    end
+    if key == 'a' then
+      gs:pressed('x')
+    end
+    if key == 's' then
+      gs:pressed('y')
+    end
+    if key == 'return' then
+      gs:pressed('start')
+    end
+    if key == 'escape' then
+      gs:pressed('back')
+    end
+    if key == 'pageup' then
+      gs:pressed('l')
+    end
+    if key == 'pagedown' then
+      gs:pressed('r')
+    end
   end
 end
 

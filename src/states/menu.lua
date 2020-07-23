@@ -19,43 +19,18 @@ function menu:draw()
   love.graphics.print("•", 15, 10 + (25 * menuItem))
 end
 
--- handle keyboard for dev
-function menu:keyreleased(key, code)
-  if key == 'escape' then
+-- handle input
+function menu:pressed(button)
+  if button == 'b' or button == 'back' then
     Gamestate.switch(StateGame)
   end
-  if key == 'down' then
+  if button == 'down' then
     menuItem = (menuItem + 1) % 3
   end
-  if key == 'up' then
+  if button == 'up' then
     menuItem = (menuItem - 1) % 3
   end
-  if key == 'return' then
-    if menuItem == 0 then
-      Gamestate.switch(StateGame)
-    end
-    if menuItem == 1 then
-      Gamestate.switch(StateOptions)
-    end
-    if menuItem == 2 then
-      love.event.quit()
-    end
-  end
-end
-
--- handle gamepad
-function menu:gamepadpressed(joystick, button)
-  lastbutton = button
-  if button == 'b' then
-    Gamestate.switch(StateGame)
-  end
-  if button == 'dpdown' then
-    menuItem = (menuItem + 1) % 3
-  end
-  if button == 'dpup' then
-    menuItem = (menuItem - 1) % 3
-  end
-  if button == 'a' then
+  if button == 'a' or button == 'start' then
     if menuItem == 0 then
       Gamestate.switch(StateGame)
     end

@@ -13,18 +13,13 @@ function game:draw()
   love.graphics.print("you last pressed:"..lastbutton, 120, 125)
 end
 
--- handle keyboard for dev
-function game:keyreleased(key, code)
-  lastbutton = key
-  if key == 'escape' then
-    Gamestate.switch(StateMenu)
+-- handle input
+function game:pressed(button, other1, other2)
+  -- for display
+  if button then
+  	lastbutton = button
   end
-end
-
--- handle gamepad
-function game:gamepadpressed(joystick, button)
-  lastbutton = button
-  if button == 'start' then
+  if button == 'start' or button == 'back' then
   	Gamestate.switch(StateMenu)
   end
 end
