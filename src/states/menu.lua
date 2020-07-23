@@ -43,9 +43,29 @@ function menu:keyreleased(key, code)
   end
 end
 
--- handle joystick
+-- handle gamepad
 function menu:gamepadpressed(joystick, button)
-  
+  lastbutton = button
+  if button == 'b' then
+    Gamestate.switch(StateGame)
+  end
+  if button == 'dpdown' then
+    menuItem = (menuItem + 1) % 3
+  end
+  if button == 'dpup' then
+    menuItem = (menuItem - 1) % 3
+  end
+  if button == 'a' then
+    if menuItem == 0 then
+      Gamestate.switch(StateGame)
+    end
+    if menuItem == 1 then
+      Gamestate.switch(StateOptions)
+    end
+    if menuItem == 2 then
+      love.event.quit()
+    end
+  end
 end
 
 return menu

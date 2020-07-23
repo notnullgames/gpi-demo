@@ -28,7 +28,7 @@ runtime/macos:
 	curl -L https://bitbucket.org/rude/love/downloads/love-$(VERSION)-macos.zip -o /tmp/love-macos.zip
 	cd $(PWD)/runtime/macos && unzip /tmp/love-macos.zip
 
-dist/$(NAME).love:
+dist/$(NAME).love: src/**/*.lua
 	mkdir -p $(PWD)/dist
 	cd src && zip -9 -r /tmp/$(NAME).zip .
 	mv /tmp/$(NAME).zip $(PWD)/dist/$(NAME).love
@@ -43,3 +43,8 @@ dist/macos/$(NAME): runtime/macos dist/$(NAME).love
 	cp -R $(PWD)/runtime/macos/love.app $(PWD)/dist/macos/$(NAME).app
 	sed -e "s/GAME_NAME/$(NAME)/g" $(PWD)/Info.plist > $(PWD)/dist/macos/$(NAME).app/Contents/Info.plist
 	cp dist/$(NAME).love $(PWD)/dist/macos/$(NAME).app/Contents/Resources/
+
+# this is sort of specific to my setup
+deploy: dist/$(NAME).love
+	ssh pi@gameboy.local "killall -9 love || exit 0"
+	scp dist/$(NAME).love pi@gameboy.local:/home/pi/RetroPie/roms/love/$(NAME).love

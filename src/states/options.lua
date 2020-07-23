@@ -12,9 +12,12 @@ function options:keyreleased(key, code)
   end
 end
 
--- handle joystick
+-- handle gamepad
 function options:gamepadpressed(joystick, button)
-  
+  lastbutton = button
+  if button == 'b' then
+    Gamestate.switch(StateMenu)
+  end
 end
 
 return options

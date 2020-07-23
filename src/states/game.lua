@@ -21,9 +21,13 @@ function game:keyreleased(key, code)
   end
 end
 
--- handle joystick
+-- handle gamepad
 function game:gamepadpressed(joystick, button)
   lastbutton = button
+  if button == 'start' then
+  	Gamestate.switch(StateMenu)
+  end
 end
+
 
 return game
